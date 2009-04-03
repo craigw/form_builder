@@ -17,7 +17,7 @@ module FormBuilder
     end
 
     %W(
-      collection_select date_select datetime_select 
+      collection_select date_select datetime_select file_field
       password_field select text_area text_field time_select time_zone_select
     ).each do |form_tag_helper|
       form_tag_helper_with_label = <<-CODE
