@@ -50,8 +50,16 @@ module FormBuilder
       class_eval form_tag_helper_with_label, __FILE__, __LINE__
     end
 
-    def submit_tag
-      %Q(<input type="submit" value="Save" />)
+    def submit(text = "Save", options = {})
+      classes = options[:class].to_s + " submit_button"
+      classes.strip!
+      classes.squeeze!
+      %Q(<input id="#{object_name}_submit" class="#{classes}" name="submit" type="submit" value="#{text}" />)
+    end
+
+    def submit_tag(*args)
+      RAILS_DEFAULT_LOGGER.info "submit_tag has been deprecated and will disappear soon. Use submit instead."
+      submit(*args)
     end
   end
 end
